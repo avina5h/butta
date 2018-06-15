@@ -14,10 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+#adding include below for connecting url files of other apps
+from django.urls import path, include
+#to include views
 from shop import views
+#this is to import setting and static so that we can connect or add static images/files in the project
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index , name="index"),
+    #connecting urls file of shop app
+    path('shop/',include('shop.urls')),
 ]
+#we can even add + that static(...) after the "]" above its like a settings debug style too
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
