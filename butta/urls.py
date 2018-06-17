@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index , name="index"),
     #connecting urls file of shop app
-    path('shop/',include('shop.urls')),
+    path('shop/', include('shop.urls')),
 ]
 #we can even add + that static(...) after the "]" above its like a settings debug style too
 if settings.DEBUG:
