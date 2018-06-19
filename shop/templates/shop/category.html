@@ -41,14 +41,14 @@
     {%  endif %}
     <div>
         <div>
-        {% for products in products %}
+        {% for product in products %}
             <div>
                 <div>
-                    <a href=""><img src="{{ products.image.url }}" alt="{{ products.name }}"</a>
+                    <a href="{{ product.get_url }}"><img src="{{ product.image.url }}" alt="{{ product.name }}"</a>
                     <div>
                          <div>
-                            <h1>{{ products.name }}</h1>
-                            <p>${{ products.price }}</p>
+                            <h1>{{ product.name }}</h1>
+                            <p>${{ product.price }}</p>
                         </div>
                     </div>
                 </div>
