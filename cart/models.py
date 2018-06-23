@@ -2,8 +2,8 @@ from django.db import models
 from shop.models import Product
 
 class Cart(models.Model):
-    cart_id = models.CharField(max_length=255,blank=True)
-    date_added = models.DateField(auto_now_add= True)
+    cart_id = models.CharField(max_length=255, blank=True)
+    date_added = models.DateField(auto_now_add = True)
 
     class Meta:
         #including db_table would mean that all the child classes (the ones that don’t specify their own Meta) would use the same database table#
@@ -13,14 +13,14 @@ class Cart(models.Model):
     def __str__(self):
         return self.cart_id
 
-class CartItems(models.Model):
+class CartItem(models.Model):
     product = models.ForeignKey(Product ,on_delete=models.CASCADE)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     quantity = models.IntegerField()
     active  = models.BooleanField(default=True)
     class Meta:
         db_table = 'CartItem'
-    def SubTotal(self):
+    def sub_total(self):
         return self.product.price * self.quantity
     def __str__(self):
         return self.product

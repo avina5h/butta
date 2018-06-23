@@ -28,6 +28,9 @@ urlpatterns = [
     path('', views.index , name="index"),
     #connecting urls file of shop app
     path('shop/', include('shop.urls')),
+    path('search/', include('search_app.urls')),
+    path('cart/', include('cart.urls')),
+
 ]
 #we can even add + that static(...) after the "]" above its like a settings debug style too
 if settings.DEBUG:
