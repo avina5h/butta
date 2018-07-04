@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'shop',
     'search_app',
     'cart',
+    'stripe',
+    'order',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +60,7 @@ ROOT_URLCONF = 'butta.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'shop','templates/'),os.path.join(BASE_DIR,'search_app','templates/' , os.path.join(BASE_DIR,'cart','templates/') )]
+        'DIRS': [os.path.join(BASE_DIR,'shop','templates/'),os.path.join(BASE_DIR,'search_app','templates/' , os.path.join(BASE_DIR,'cart','templates/') , os.path.join(BASE_DIR,'order','templates/'))]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,3 +133,10 @@ os.path.join(BASE_DIR, 'static'),
 )
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media','static')
+
+### Stripe settings ###
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_HtQ2GGBQQ5BeAwWVScRtjpom'
+STRIPE_SECRET_KEY = 'sk_test_TZNW2qvgVHbrVm7Y3xjHcYWb'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
